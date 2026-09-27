@@ -342,3 +342,272 @@ h1 em { font-style: normal; color: #ab643b; }
   .artwork { --paper-border: 11px; }
   .artwork-paper { padding: var(--paper-border); }
 }
+
+/* Product foundation */
+.header-icon-link svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.header-icon-link.github-icon, .header-icon-link .github-icon { fill: currentColor; stroke: none; }
+.header-icon-link { border: 1px solid var(--glass-border); padding: 0; }
+.avatar-initial { display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#c97b46;color:#fff7e7;font-weight:800; }
+.product-hero { max-width: 1160px; margin: 0 auto; display:grid;grid-template-columns:minmax(360px,1.08fr) minmax(330px,.92fr);align-items:center;gap:clamp(42px,6vw,94px);text-align:left;padding-inline:clamp(34px,5vw,80px); }
+.product-hero .artwork { width:min(100%,560px);justify-self:end; }
+.hero-copy { max-width:520px;position:relative;z-index:2; }
+.hero-copy .eyebrow { justify-content:flex-start; }
+.hero-copy h1 { font-size:clamp(45px,4.4vw,70px); }
+.hero-copy .hero-description { margin-top:16px; }
+.feature-actions { display:flex;flex-direction:column;gap:11px;margin-top:25px;width:min(100%,310px); }
+.feature-button { min-height:54px;border-radius:29px;padding:0 19px;display:grid;grid-template-columns:25px 1fr 20px;align-items:center;gap:12px;text-decoration:none;color:var(--button-ink);font-weight:750;letter-spacing:.08em;text-align:left; }
+.feature-button svg { width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round; }
+.feature-button b { font-size:20px;font-weight:400;text-align:right;transition:transform .2s ease; }
+.feature-button:hover b { transform:translateX(3px); }
+.feature-button.primary { background:color-mix(in srgb,var(--glass) 83%,#c87943 17%);border-color:rgba(255,255,255,.88); }
+.feature-button.secondary { width:92%; }
+.feature-button.tertiary { width:84%;min-height:48px;opacity:.9; }
+
+.album-overlay { position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:24px;background:rgba(16,20,18,.56);backdrop-filter:blur(7px);animation:albumFade .35s ease both; }
+.album-shell { width:min(1120px,96vw);color:#41392d;transform-origin:9% 7%;animation:albumArrive .68s cubic-bezier(.2,.78,.2,1) both; }
+.album-shell>header { display:flex;align-items:flex-end;gap:20px;padding:0 64px 13px;color:#fff2d9;text-shadow:0 2px 12px #000; }
+.album-shell h2 { margin:2px 0 0;font:600 clamp(28px,3vw,42px) Georgia,"Songti SC",serif; }
+.album-kicker { font-size:9px;letter-spacing:.22em;font-weight:800; }
+.album-meta { margin-left:auto;font-size:11px;letter-spacing:.08em; }.album-meta span { padding:4px 8px;border:1px solid rgba(255,255,255,.4);border-radius:20px;margin-right:8px; }
+.album-close { width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(15,20,18,.28);color:white;font-size:26px;cursor:pointer; }
+.album-stage { display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center; }
+.open-book { position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:min(620px,68vh);perspective:1600px;filter:drop-shadow(0 28px 35px rgba(0,0,0,.38)); }
+.album-page { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:clamp(12px,1.5vw,22px);padding:clamp(30px,3.2vw,54px);background:#eee2c6;background-image:linear-gradient(90deg,rgba(117,89,52,.08),transparent 10%),radial-gradient(circle at 20% 20%,rgba(255,255,255,.55),transparent 32%);border:1px solid rgba(75,58,36,.22); }
+.album-page.left { border-radius:18px 3px 3px 18px;transform-origin:right;animation:bookLeft .68s cubic-bezier(.2,.78,.2,1) both;box-shadow:inset -24px 0 28px -28px rgba(43,33,23,.55); }
+.album-page.right { border-radius:3px 18px 18px 3px;transform-origin:left;animation:bookRight .68s cubic-bezier(.2,.78,.2,1) both;box-shadow:inset 24px 0 28px -28px rgba(43,33,23,.55); }
+.book-spine { position:absolute;z-index:3;left:50%;top:1%;bottom:1%;width:12px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(75,55,30,.25),rgba(255,255,255,.2),transparent);pointer-events:none; }
+.album-piece { min-width:0;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#4e4638;font:700 10px Georgia,"Songti SC",serif;transform:rotate(var(--tilt));cursor:pointer; }
+.album-photo { position:relative;display:block;width:min(100%,150px);max-height:130px;background:#fbf8ec;padding:6px;box-shadow:0 5px 11px rgba(50,39,25,.2);overflow:hidden; }
+.album-photo img { object-fit:contain;padding:6px; }
+.page-arrow { width:44px;height:64px;border:1px solid rgba(255,255,255,.46);border-radius:24px;background:rgba(255,249,229,.2);color:#fff3d6;font-size:42px;cursor:pointer;backdrop-filter:blur(8px); }.page-arrow:disabled{opacity:.2;cursor:default}.page-arrow.previous{justify-self:start}.page-arrow.next{justify-self:end}
+.album-shell>footer { margin:13px auto 0;width:max-content;max-width:90%;padding:9px 14px;border-radius:20px;color:#fff3dd;background:rgba(15,20,18,.45);font-size:12px; }.album-shell>footer button{border:0;background:none;color:#f2c177;text-decoration:underline;cursor:pointer; }
+@keyframes albumFade{from{opacity:0}to{opacity:1}}@keyframes albumArrive{from{opacity:.2;transform:translate(-42vw,-38vh) scale(.12) rotate(-12deg)}55%{opacity:1;transform:translate(0,0) scale(.92) rotate(0)}to{transform:none}}@keyframes bookLeft{from{transform:rotateY(76deg)}to{transform:rotateY(0)}}@keyframes bookRight{from{transform:rotateY(-76deg)}to{transform:rotateY(0)}}
+
+.auth-overlay { position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:20px;background:rgba(15,20,18,.58);backdrop-filter:blur(9px); }
+.auth-card { position:relative;width:min(430px,100%);padding:34px;border-radius:26px;color:var(--ink);background:var(--modal-bg);box-shadow:0 30px 80px rgba(0,0,0,.4); }.auth-card h2{margin:3px 0 20px;font:600 32px Georgia,"Songti SC",serif}.auth-close{position:absolute;right:18px;top:15px;border:0;background:none;color:inherit;font-size:28px;cursor:pointer}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;margin-bottom:18px;border-bottom:1px solid rgba(120,105,80,.25)}.auth-tabs button{padding:10px;border:0;background:none;color:inherit;cursor:pointer}.auth-tabs .active{border-bottom:2px solid #c87943;color:#c87943;font-weight:800}.auth-card label,.account-card label{display:grid;gap:7px;margin:12px 0;font-size:12px;font-weight:700}.auth-card input,.account-card input{height:44px;border:1px solid rgba(100,90,70,.25);border-radius:12px;padding:0 13px;background:rgba(255,255,255,.36);color:inherit}.auth-submit,.account-card form button,.account-card.empty button{width:100%;height:46px;border:0;border-radius:23px;background:#526653;color:#fff8e8;font-weight:800;cursor:pointer}.auth-error{color:#b3473f;font-size:12px}.auth-hint{font-size:11px;line-height:1.6;color:var(--muted)}
+
+.about-page,.account-page { min-height:100svh;color:#26352e;background:#eee1c4;background-image:radial-gradient(circle at 12% 8%,rgba(255,255,255,.7),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.45' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");padding:30px clamp(22px,6vw,90px) 70px; }.about-page header,.account-page header{display:flex;justify-content:space-between;align-items:center}.about-page a,.account-page a{color:inherit}.about-page article{width:min(980px,100%);margin:70px auto 0}.about-kicker{font-size:10px;letter-spacing:.24em;font-weight:800;color:#8c5c38}.about-page h1{font-size:clamp(42px,6vw,76px);line-height:1.12}.origin-card{display:flex;gap:22px;align-items:center;margin:45px 0;padding:28px;border:1px solid rgba(90,70,45,.2);border-radius:24px;background:rgba(255,250,235,.45)}.origin-card svg{width:48px;fill:none;stroke:#8c5c38;stroke-width:1.4}.origin-card h2,.origin-card p{margin:0}.origin-card p{margin-top:7px;color:#687064}.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.about-grid section,.data-note{padding:26px;background:rgba(255,250,235,.5);border-radius:20px}.about-grid b{color:#bd7544}.about-grid h2{font:600 24px Georgia,"Songti SC",serif}.about-grid p,.data-note p{line-height:1.75;color:#5e675c}.data-note{margin-top:16px}.about-cta{margin-top:24px;display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border-radius:28px;background:#526653;color:#fff8e8!important;text-decoration:none}.about-cta svg{width:22px;fill:none;stroke:currentColor}
+.account-page{display:grid;align-content:start}.account-card{width:min(850px,100%);margin:70px auto 0;padding:38px;border-radius:28px;background:rgba(255,250,235,.65);box-shadow:0 24px 60px rgba(66,50,30,.16)}.account-card.empty{text-align:center;width:min(430px,100%)}.account-card.empty svg{width:60px;fill:none;stroke:currentColor}.profile-heading{display:flex;align-items:center;gap:20px}.profile-avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:#c87943;color:#fff;font-size:30px;font-weight:800}.profile-heading span{font-size:9px;letter-spacing:.2em}.profile-heading h1,.profile-heading p{margin:4px 0}.account-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}.avatar-upload{padding:12px;border:1px dashed rgba(80,70,50,.35);border-radius:14px}.logout-button{margin-top:28px;border:0;background:none;color:#9c463d;text-decoration:underline;cursor:pointer}.account-message{padding:10px 14px;border-radius:12px;background:rgba(90,120,90,.12)}
+
+@media(max-width:800px){.product-hero{display:flex;text-align:center;padding:50px 20px 65px;gap:34px}.product-hero .hero-copy{display:contents}.product-hero .hero-copy .eyebrow{order:-2;justify-content:center}.product-hero .hero-copy h1{order:-1;font-size:clamp(34px,10vw,46px)}.product-hero .hero-description{order:0}.product-hero .artwork{order:1;width:min(84vw,450px);justify-self:auto}.feature-actions{order:2;width:min(320px,100%);margin-top:0}.feature-button,.feature-button.secondary,.feature-button.tertiary{width:100%}.open-book{min-height:min(520px,66vh)}.album-page{gap:7px;padding:18px 12px}.album-stage{grid-template-columns:38px minmax(0,1fr) 38px}.page-arrow{width:34px;height:50px}.album-shell>header{padding-inline:38px}.album-photo{padding:3px}.album-photo img{padding:3px}.album-piece>span:last-child{display:none}.about-grid,.account-grid{grid-template-columns:1fr}.about-page article{margin-top:45px}.about-page h1{font-size:42px}}
+@media(max-width:430px){.album-overlay{padding:8px}.album-shell{width:100%}.open-book{min-height:500px}.album-page{grid-template-columns:repeat(2,1fr);padding:16px 8px}.album-stage{grid-template-columns:29px minmax(0,1fr) 29px}.page-arrow{width:27px;border:0;background:transparent}.album-shell>header{padding:0 30px 8px}.album-shell h2{font-size:25px}.album-meta{font-size:9px}.album-kicker{display:none}.album-photo{width:100%}.origin-card{align-items:flex-start}.about-page,.account-page{padding-inline:18px}.account-card{padding:24px}}
+@media(prefers-reduced-motion:reduce){.album-overlay,.album-shell,.album-page{animation:none!important}}
+
+/* Homepage composition refinement */
+@media (min-width: 801px) {
+  .product-hero {
+    grid-template-columns: minmax(390px, 1.08fr) minmax(430px, .92fr);
+    gap: clamp(24px, 3vw, 48px);
+  }
+  .product-hero .artwork {
+    transform: translateX(clamp(22px, 2.4vw, 44px));
+  }
+  .hero-copy h1 {
+    white-space: nowrap;
+    font-size: clamp(42px, 4vw, 64px);
+  }
+  .header-note {
+    top: clamp(28px, 7.5vh, 120px);
+    left: clamp(195px, 20vw, 330px);
+  }
+}
+
+/* Generated oil-pastel action icons and aligned homepage controls */
+.product-hero .artwork { width: min(100%, 500px); }
+.feature-actions { width: min(100%, 310px); }
+.feature-button,
+.feature-button.secondary,
+.feature-button.tertiary {
+  width: 100%;
+  min-height: 58px;
+  height: 58px;
+  grid-template-columns: 36px 1fr;
+  padding: 0 20px;
+  opacity: 1;
+}
+.feature-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* Editorial desktop composition: title above artwork and actions */
+@media (min-width: 801px) {
+  .product-hero {
+    width: min(1220px, calc(100vw - 100px));
+    max-width: none;
+    grid-template-columns: minmax(460px, 680px) minmax(270px, 330px);
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas:
+      "eyebrow eyebrow"
+      "title title"
+      "art description"
+      "art actions";
+    justify-content: center;
+    align-content: center;
+    align-items: start;
+    column-gap: clamp(34px, 4vw, 68px);
+    row-gap: 12px;
+    padding-inline: 0;
+  }
+  .product-hero .hero-copy { display: contents; }
+  .product-hero .eyebrow {
+    grid-area: eyebrow;
+    justify-self: center;
+    margin: 0 0 2px;
+  }
+  .product-hero .hero-copy h1 {
+    grid-area: title;
+    justify-self: center;
+    margin: 0 0 clamp(16px, 2.2vh, 28px);
+    white-space: nowrap;
+    text-align: center;
+    font-size: clamp(44px, 4.2vw, 66px);
+  }
+  .product-hero .artwork {
+    grid-area: art;
+    width: min(100%, 590px);
+    justify-self: end;
+    align-self: start;
+    transform: none;
+  }
+  .product-hero .hero-description {
+    grid-area: description;
+    align-self: end;
+    margin: 0 0 12px;
+  }
+  .product-hero .feature-actions {
+    grid-area: actions;
+    align-self: start;
+    width: 270px;
+    margin-top: 6px;
+    gap: 12px;
+  }
+  .product-hero .feature-button,
+  .product-hero .feature-button.secondary,
+  .product-hero .feature-button.tertiary {
+    width: 270px;
+    min-height: 56px;
+    height: 56px;
+    grid-template-columns: 46px 1fr;
+    padding: 0 14px 0 20px;
+    overflow: visible;
+  }
+  .product-hero .feature-icon {
+    width: 58px;
+    height: 58px;
+    max-width: none;
+    transform: translateX(-18px);
+    filter: drop-shadow(0 4px 5px rgba(45, 36, 27, .18));
+  }
+  .product-hero .feature-button span {
+    margin-left: -10px;
+  }
+}
+
+/* Compact the central composition onto the clear tabletop */
+@media (min-width: 801px) {
+  .product-hero {
+    width: min(1060px, calc(100vw - 150px));
+    grid-template-columns: minmax(420px, 530px) 260px;
+    column-gap: clamp(30px, 3vw, 48px);
+  }
+  .product-hero .artwork {
+    width: min(100%, 500px);
+  }
+  .product-hero .feature-actions {
+    width: 252px;
+    gap: 10px;
+  }
+  .product-hero .feature-button,
+  .product-hero .feature-button.secondary,
+  .product-hero .feature-button.tertiary {
+    width: 252px;
+    min-height: 48px;
+    height: 48px;
+    grid-template-columns: 42px 1fr;
+    padding: 0 12px 0 17px;
+  }
+  .product-hero .feature-icon {
+    width: 52px;
+    height: 52px;
+    transform: translateX(-16px);
+  }
+}
+
+/* Refined liquid-glass controls and stable desktop copy */
+@media (min-width: 801px) {
+  .product-hero {
+    width: min(1120px, calc(100vw - 120px));
+    grid-template-columns: minmax(420px, 520px) minmax(340px, 360px);
+    column-gap: clamp(36px, 3.5vw, 56px);
+  }
+  .product-hero .hero-description {
+    width: max-content;
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.9;
+  }
+  .product-hero .feature-actions {
+    width: 228px;
+    gap: 10px;
+  }
+  .product-hero .feature-button,
+  .product-hero .feature-button.secondary,
+  .product-hero .feature-button.tertiary {
+    position: relative;
+    width: 228px;
+    min-height: 46px;
+    height: 46px;
+    grid-template-columns: 38px 1fr;
+    padding: 0 14px 0 17px;
+    border: 1px solid rgba(255, 255, 255, .7);
+    border-radius: 23px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.13)),
+      color-mix(in srgb, var(--glass) 82%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.58),
+      inset 0 -1px 0 rgba(95,78,54,.08),
+      0 7px 18px rgba(55,45,33,.13);
+    backdrop-filter: blur(18px) saturate(135%);
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    font-size: 15px;
+    letter-spacing: .055em;
+    overflow: visible;
+  }
+  .product-hero .feature-button.primary {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.12)),
+      color-mix(in srgb, var(--glass) 82%, #d89a64 18%);
+  }
+  .product-hero .feature-button::after {
+    content: "";
+    position: absolute;
+    inset: 2px 10px auto;
+    height: 35%;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,255,255,.2), transparent);
+    pointer-events: none;
+  }
+  .product-hero .feature-icon {
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    transform: translateX(-11px);
+    filter: drop-shadow(0 3px 4px rgba(45,36,27,.16));
+  }
+  .product-hero .feature-button span {
+    position: relative;
+    z-index: 1;
+    margin-left: -5px;
+    white-space: nowrap;
+  }
+}
+
+/* Slightly tighten the artwork and action columns */
+@media (min-width: 801px) {
+  .product-hero { column-gap: clamp(24px, 2.5vw, 40px); }
+}

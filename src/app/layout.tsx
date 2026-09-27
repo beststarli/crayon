@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/components/auth-provider";
+import AuthDialog from "@/components/auth-dialog";
 
 export const metadata: Metadata = {
   title: "Crayon 把喜欢的瞬间，画下来",
@@ -26,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="zh-CN">
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
-      <body>{children}</body>
+      <body><AuthProvider>{children}<AuthDialog /></AuthProvider></body>
     </html>
   );
 }
